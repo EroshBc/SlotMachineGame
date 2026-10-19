@@ -9,6 +9,7 @@
 
 NUM_LINES = 3
 
+
 def deposit():
     while True:
         amount = input("What would you like to depsoit ? $")
@@ -21,6 +22,9 @@ def deposit():
         else:
             print("Please enter a valid number.")
     return amount
+
+
+# Function to get number of lines to bet on
 
 def get_number_of_lines():
     while True:
