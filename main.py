@@ -7,6 +7,8 @@
  #ask user enter the value, check is number and value over zero
  #then add to balance
 
+NUM_LINES = 3
+
 def deposit():
     while True:
         amount = input("What would you like to depsoit ? $")
@@ -20,4 +22,24 @@ def deposit():
             print("Please enter a valid number.")
     return amount
 
-deposit()
+def get_number_of_lines():
+    while True:
+        lines = input("Enter the number of lines to bet on (1-" + str(NUM_LINES) + "): ")
+        if lines.isdigit():
+            lines = int(lines)
+            if 1 <= lines <= NUM_LINES:
+                break
+            else:
+                print("Please enter a valid number of lines (1-" + str(NUM_LINES) + ").")
+        else:
+            print("Please enter a valid number.")
+    return lines
+
+def main():
+    balance = deposit()
+    lines = get_number_of_lines()
+
+    print(f"You have deposited: ${balance} and are betting on {lines} lines.")
+
+
+main()
