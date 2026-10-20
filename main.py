@@ -8,8 +8,10 @@
  #then add to balance
 
 NUM_LINES = 3
+MAX_BET = 100
+MIN_BET = 1
 
-
+#function to deposit money
 def deposit():
     while True:
         amount = input("What would you like to depsoit ? $")
@@ -25,7 +27,6 @@ def deposit():
 
 
 # Function to get number of lines to bet on
-
 def get_number_of_lines():
     while True:
         lines = input("Enter the number of lines to bet on (1-" + str(NUM_LINES) + "): ")
@@ -39,11 +40,35 @@ def get_number_of_lines():
             print("Please enter a valid number.")
     return lines
 
+#Function to get bit
+def get_bet():
+    while True:
+        bet = input("What would you like to bet on each line? $")
+        if bet.isdigit():
+            bet = int(bet)
+            if MIN_BET <= bet <= MAX_BET:
+                break
+            else:
+                print(f"Amount must be between ${MIN_BET} and ${MAX_BET}.")
+        else:
+            print("Please enter a valid number.")
+    return bet
+
+
 def main():
     balance = deposit()
     lines = get_number_of_lines()
+    while True:
+        bet = get_bet()
+        tot_bet = lines * bet
+
+        if tot_bet > balance:
+            print(f"You don't have enough money to place that bet. Your current balance is: ${balance}.")
+        else:
+            break
 
     print(f"You have deposited: ${balance} and are betting on {lines} lines.")
+    print(f"Your total bet is: ${tot_bet}")
 
 
 main()
